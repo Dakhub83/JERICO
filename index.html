@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clinique JERICO — Soins modernes au Burkina Faso</title>
+<style>
+
+  /* ====================================================
+     TOKENS
+     ==================================================== */
+  :root{
+    --emerald-900:#0b4a44;
+    --emerald-700:#0f766e;
+    --emerald-600:#13877e;
+    --emerald-100:#e4f4f1;
+    --emerald-50:#f3faf8;
+    --white:#ffffff;
+    --ink:#0d1f1c;
+    --ink-soft:#4a5b58;
+    --line:#dde8e5;
+    --urgence:#dc2626;
+    --urgence-dark:#991b1b;
+    --orange-money:#ff6a00;
+    --moov-money:#0054a6;
+    --radius-s:8px;
+    --radius-m:14px;
+    --radius-l:22px;
+    --shadow-card:0 10px 30px -12px rgba(15,118,110,0.22);
+    --font-display:'Manrope',system-ui,-apple-system,Segoe UI,sans-serif;
+    --font-body:'Work Sans',system-ui,-apple-system,Segoe UI,sans-serif;
+    --font-mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:var(--font-body);
+    color:var(--ink);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+    padding-bottom: env(safe-area-inset-bottom,0px);
+  }
+  img{max-width:100%;}
+  h1,h2,h3{font-family:var(--font-display);margin:0;text-wrap:balance;letter-spacing:-0.01em;}
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  button{font-family:inherit;cursor:pointer;}
+  ::selection{background:var(--emerald-100);}
+  .mono{font-family:var(--font-mono);}
+
+  .wrap{
+    max-width:1140px;
+    margin:0 auto;
+    padding-inline:20px;
+  }
+
+  @media (prefers-reduced-motion: no-preference){
+    .fade-up{animation:fadeUp .6s ease both;}
+  }
+  @keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+  /* ====================================================
+     BARRE D'URGENCE
+     ==================================================== */
+  .urgence-bar{
+    position:sticky;
+    top:env(safe-area-inset-top,0px);
+    z-index:100;
+    background:var(--urgence);
+    color:var(--white);
+    padding:9px 16px;
+    padding-top:calc(9px + env(safe-area-inset-top,0px));
+    font-size:13.5px;
+    font-weight:600;
+  }
+  .urgence-bar .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    text-align:center;
+  }
+  .urgence-bar .pulse{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--white);
+    box-shadow:0 0 0 0 rgba(255,255,255,.7);
+    animation:pulseDot 1.8s infinite;
+    flex-shrink:0;
+  }
+  @keyframes pulseDot{
+    0%{box-shadow:0 0 0 0 rgba(255,255,255,.55);}
+    70%{box-shadow:0 0 0 7px rgba(255,255,255,0);}
+    100%{box-shadow:0 0 0 0 rgba(255,255,255,0);}
+  }
+  .urgence-bar .num{
+    font-family:var(--font-mono);
+    background:rgba(255,255,255,0.18);
+    padding:2px 9px;
+    border-radius:20px;
+    letter-spacing:.02em;
+  }
+
+  /* ====================================================
+     HEADER
+     ==================================================== */
+  header{
+    position:sticky;
+    top:calc(env(safe-area-inset-top,0px) + 38px);
+    z-index:90;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding-block:14px;
+    gap:16px;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:19px;
+    color:var(--emerald-900);
+    min-width:0;
+  }
+  .logo .text{min-width:0;overflow:hidden;}
+  .logo .name{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .logo .mark{
+    width:34px;height:34px;
+    border-radius:10px;
+    background:var(--emerald-700);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--white);
+    font-size:17px;
+    flex-shrink:0;
+  }
+  .logo .sub{
+    display:block;
+    font-family:var(--font-body);
+    font-weight:500;
+    font-size:10.5px;
+    color:var(--ink-soft);
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+  nav.menu{
+    display:flex;
+    gap:26px;
+    font-size:14.5px;
+    font-weight:600;
+  }
+  nav.menu a{color:var(--ink-soft);transition:color .15s;}
+  nav.menu a:hover{color:var(--emerald-700);}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    border:none;
+    border-radius:999px;
+    font-weight:700;
+    font-size:14.5px;
+    padding:11px 20px;
+    transition:transform .15s, box-shadow .15s, background .15s;
+  }
+  .btn:active{transform:translateY(1px) scale(.98);}
+  .btn-primary{background:var(--emerald-700);color:var(--white);box-shadow:0 8px 20px -8px rgba(15,118,110,.55);}
+  .btn-primary:hover{background:var(--emerald-900);}
+  .btn-ghost{background:var(--emerald-50);color:var(--emerald-900);}
+  .btn-ghost:hover{background:var(--emerald-100);}
+  .header-cta{flex-shrink:0;}
+  .burger{display:none;background:none;border:none;padding:8px;color:var(--emerald-900);}
+  .burger svg{width:24px;height:24px;}
+
+  @media (max-width:860px){
+    nav.menu{
+      position:absolute;
+      top:100%;left:0;right:0;
+      background:var(--white);
+      border-bottom:1px solid var(--line);
+      flex-direction:column;
+      padding:16px 20px 20px;
+      gap:14px;
+      display:none;
+      box-shadow:0 14px 24px -16px rgba(0,0,0,.2);
+    }
+    nav.menu.open{display:flex;}
+    .burger{display:block;}
+    .header-cta .btn-label-full{display:none;}
+    .header-cta{padding:11px 14px;}
+  }
+  @media (max-width:420px){
+    .wrap{padding-inline:16px;}
+  }
+
+  /* ====================================================
+     HERO
+     ==================================================== */
+  .hero{
+    background:
+      radial-gradient(circle at 85% -10%, var(--emerald-100) 0%, transparent 55%),
+      var(--white);
+    padding-block:52px 68px;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:48px;
+    align-items:start;
+  }
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:36px;}
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:12.5px;
+    font-weight:700;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--emerald-700);
+    background:var(--emerald-50);
+    border:1px solid var(--emerald-100);
+    border-radius:999px;
+    padding:7px 14px;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(32px,4.6vw,50px);
+    color:var(--emerald-900);
+    line-height:1.08;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--emerald-700);
+    position:relative;
+  }
+  .hero p.lead{
+    margin-top:18px;
+    font-size:17px;
+    color:var(--ink-soft);
+    max-width:46ch;
+  }
+  .hero-stats{
+    display:flex;
+    gap:28px;
+    margin-top:30px;
+    flex-wrap:wrap;
+  }
+  .stat b{
+    display:block;
+    font-family:var(--font-display);
+    font-size:24px;
+    color:var(--emerald-900);
+    font-variant-numeric:tabular-nums;
+  }
+  .stat span{font-size:12.5px;color:var(--ink-soft);}
+  .hero-ctas{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap;}
+
+  /* ----- symptom checker card ----- */
+  .checker-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:var(--radius-l);
+    box-shadow:var(--shadow-card);
+    padding:26px;
+  }
+  .checker-card .ck-head{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:4px;
+  }
+  .checker-card .ck-head .ico{
+    width:38px;height:38px;border-radius:10px;
+    background:var(--emerald-700);
+    color:var(--white);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .checker-card h3{font-size:17px;color:var(--emerald-900);}
+  .checker-card .ck-head small{display:block;color:var(--ink-soft);font-size:12.5px;font-weight:500;}
+
+  .field-label{
+    display:block;
+    font-size:12.5px;
+    font-weight:700;
+    color:var(--ink-soft);
+    letter-spacing:.02em;
+    margin:18px 0 6px;
+  }
+  select, input{
+    width:100%;
+    font-family:inherit;
+    font-size:15px;
+    padding:12px 14px;
+    border-radius:var(--radius-s);
+    border:1.5px solid var(--line);
+    background:var(--white);
+    color:var(--ink);
+    appearance:none;
+  }
+  select:focus, input:focus{
+    outline:none;
+    border-color:var(--emerald-700);
+    box-shadow:0 0 0 3px var(--emerald-100);
+  }
+  select{
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%234a5b58' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;
+    background-position:right 14px center;
+    padding-right:36px;
+  }
+
+  #symptom-result{
+    margin-top:16px;
+    border-radius:var(--radius-m);
+    padding:16px;
+    display:none;
+    gap:10px;
+    align-items:flex-start;
+  }
+  #symptom-result.show{display:flex;}
+  #symptom-result.ok{background:var(--emerald-50);border:1px solid var(--emerald-100);}
+  #symptom-result.danger{background:#fef2f2;border:1px solid #fecaca;animation:alertPop .35s ease;}
+  @keyframes alertPop{from{transform:scale(.97);opacity:0;}to{transform:scale(1);opacity:1;}}
+  #symptom-result .res-ico{
+    width:30px;height:30px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;color:var(--white);font-weight:800;font-size:15px;
+  }
+  #symptom-result.ok .res-ico{background:var(--emerald-700);}
+  #symptom-result.danger .res-ico{background:var(--urgence);}
+  #symptom-result .res-title{font-weight:800;font-size:14.5px;margin-bottom:3px;}
+  #symptom-result.ok .res-title{color:var(--emerald-900);}
+  #symptom-result.danger .res-title{color:var(--urgence-dark);}
+  #symptom-result .res-text{font-size:13.5px;color:var(--ink-soft);line-height:1.5;}
+  #symptom-result.danger .res-text{color:#7f1d1d;}
+  #symptom-result .res-call{
+    display:inline-flex;align-items:center;gap:6px;
+    margin-top:10px;font-weight:700;font-size:13.5px;
+    color:var(--urgence-dark);
+    font-family:var(--font-mono);
+  }
+
+  /* ====================================================
+     SECTIONS GÉNÉRIQUES
+     ==================================================== */
+  section{padding-block:64px;}
+  .section-head{max-width:620px;margin-bottom:38px;}
+  .section-head .eyebrow{margin-bottom:14px;}
+  .section-head h2{font-size:clamp(26px,3.4vw,36px);color:var(--emerald-900);}
+  .section-head p{margin-top:12px;color:var(--ink-soft);font-size:16px;}
+
+  .poles{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+  }
+  @media (max-width:760px){.poles{grid-template-columns:1fr;}}
+  .pole-card{
+    border:1px solid var(--line);
+    border-radius:var(--radius-m);
+    padding:24px;
+    background:var(--white);
+    transition:box-shadow .2s, transform .2s;
+  }
+  .pole-card:hover{box-shadow:var(--shadow-card);transform:translateY(-3px);}
+  .pole-card .ico{
+    width:44px;height:44px;border-radius:12px;
+    background:var(--emerald-50);
+    color:var(--emerald-700);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:14px;
+  }
+  .pole-card h3{font-size:16.5px;color:var(--emerald-900);margin-bottom:8px;}
+  .pole-card p{font-size:13.5px;color:var(--ink-soft);}
+
+  /* ====================================================
+     RENDEZ-VOUS (style Doctolib)
+     ==================================================== */
+  #rendez-vous{background:var(--emerald-50);}
+  .rdv-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:40px;
+    align-items:start;
+  }
+  @media (max-width:900px){.rdv-grid{grid-template-columns:1fr;}}
+
+  .rdv-steps{display:flex;flex-direction:column;gap:10px;margin-bottom:28px;}
+  .rdv-step{display:flex;gap:12px;align-items:flex-start;}
+  .rdv-step .n{
+    width:26px;height:26px;border-radius:50%;
+    background:var(--emerald-700);color:var(--white);
+    font-size:12.5px;font-weight:800;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;margin-top:1px;
+  }
+  .rdv-step b{display:block;font-size:14.5px;color:var(--emerald-900);}
+  .rdv-step span{font-size:13px;color:var(--ink-soft);}
+
+  form#rdv-form{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:var(--radius-l);
+    box-shadow:var(--shadow-card);
+    padding:28px;
+  }
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media (max-width:520px){.form-row{grid-template-columns:1fr;}}
+
+  .payment-group{display:flex;gap:12px;margin-top:8px;flex-wrap:wrap;}
+  .pay-option{
+    flex:1;
+    min-width:140px;
+    border:1.5px solid var(--line);
+    border-radius:var(--radius-m);
+    padding:14px 12px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+    text-align:center;
+    background:var(--white);
+    transition:border-color .15s, box-shadow .15s, transform .1s;
+  }
+  .pay-option:hover{transform:translateY(-2px);}
+  .pay-option .pay-logo{
+    width:42px;height:42px;border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--white);font-weight:800;font-size:12px;letter-spacing:-.02em;
+  }
+  .pay-option[data-pay="orange"] .pay-logo{background:var(--orange-money);}
+  .pay-option[data-pay="moov"] .pay-logo{background:var(--moov-money);}
+  .pay-option[data-pay="especes"] .pay-logo{background:var(--emerald-700);}
+  .pay-option span{font-size:12.5px;font-weight:700;color:var(--ink);}
+  .pay-option small{font-size:11px;color:var(--ink-soft);}
+  .pay-option.selected{
+    border-color:var(--emerald-700);
+    box-shadow:0 0 0 3px var(--emerald-100);
+    background:var(--emerald-50);
+  }
+  .pay-option.selected[data-pay="orange"]{border-color:var(--orange-money);box-shadow:0 0 0 3px rgba(255,106,0,.14);}
+  .pay-option.selected[data-pay="moov"]{border-color:var(--moov-money);box-shadow:0 0 0 3px rgba(0,84,166,.14);}
+
+  #rdv-feedback{
+    margin-top:6px;
+    font-size:12.5px;
+    color:var(--urgence-dark);
+    min-height:16px;
+  }
+
+  .rdv-submit{width:100%;justify-content:center;margin-top:22px;font-size:15.5px;padding:13px 20px;}
+
+  #confirmation-panel{
+    margin-top:18px;
+    border-radius:var(--radius-m);
+    background:var(--emerald-50);
+    border:1px solid var(--emerald-100);
+    padding:18px 20px;
+    display:none;
+  }
+  #confirmation-panel.show{display:block;animation:alertPop .3s ease;}
+  #confirmation-panel .conf-title{
+    display:flex;align-items:center;gap:8px;
+    font-weight:800;color:var(--emerald-900);font-size:14.5px;margin-bottom:8px;
+  }
+  #confirmation-panel .conf-check{
+    width:22px;height:22px;border-radius:50%;background:var(--emerald-700);
+    color:var(--white);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;
+  }
+  #confirmation-panel dl{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:13px;margin:0;}
+  #confirmation-panel dt{color:var(--ink-soft);}
+  #confirmation-panel dd{margin:0;font-weight:600;color:var(--ink);}
+
+  /* ====================================================
+     FOOTER
+     ==================================================== */
+  footer{
+    background:var(--emerald-900);
+    color:#d8ebe8;
+    padding-block:44px 28px;
+    margin-top:20px;
+  }
+  .foot-grid{
+    display:grid;
+    grid-template-columns:1.3fr 1fr 1fr;
+    gap:32px;
+  }
+  @media (max-width:760px){.foot-grid{grid-template-columns:1fr;}}
+  footer h4{font-family:var(--font-display);color:var(--white);font-size:14px;margin-bottom:12px;}
+  footer .logo{color:var(--white);margin-bottom:10px;}
+  footer .logo .mark{background:rgba(255,255,255,.15);}
+  footer p{font-size:13.5px;color:#aecdc9;line-height:1.6;}
+  footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;}
+  footer ul a{font-size:13.5px;color:#aecdc9;}
+  footer ul a:hover{color:var(--white);}
+  .foot-bottom{
+    border-top:1px solid rgba(255,255,255,.12);
+    margin-top:34px;
+    padding-top:18px;
+    font-size:12px;
+    color:#86a8a3;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+</style>
+</head>
+<body>
+
+  <!-- ==================================================
+       BARRE D'URGENCE
+       ================================================== -->
+  <div class="urgence-bar">
+    <div class="wrap">
+      <span class="pulse" aria-hidden="true"></span>
+      <span>URGENCE VITALE ? Service ambulancier JERICO disponible 24h/24 — 7j/7</span>
+      <span class="num">+226 70 00 12 34</span>
+    </div>
+  </div>
+
+  <!-- ==================================================
+       HEADER
+       ================================================== -->
+  <header>
+    <div class="wrap nav-row">
+      <div class="logo">
+        <span class="mark">J</span>
+        <span class="text">
+          <span class="name">CLINIQUE JERICO</span>
+          <span class="sub">Ouagadougou · Burkina Faso</span>
+        </span>
+      </div>
+
+      <nav class="menu" id="main-menu">
+        <a href="#accueil">Accueil</a>
+        <a href="#symptomes">Orientation symptômes</a>
+        <a href="#poles">Pôles médicaux</a>
+        <a href="#rendez-vous">Rendez-vous</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div style="display:flex;align-items:center;gap:8px;">
+        <a href="#rendez-vous" class="btn btn-primary header-cta">
+          <span class="btn-label-full">Prendre</span> rendez-vous
+        </a>
+        <button class="burger" id="burger-btn" aria-label="Ouvrir le menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================================================
+       HERO + SYMPTOM CHECKER
+       ================================================== -->
+  <section class="hero" id="accueil">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">2 hectares dédiés à votre santé</span>
+        <h1>Une médecine moderne, <em>pensée pour le Burkina Faso</em>.</h1>
+        <p class="lead">
+          La Clinique JERICO réunit sur un seul site de 2 hectares à Ouagadougou la médecine générale,
+          la pédiatrie, la maternité et les urgences — avec des rendez-vous pris en ligne et payés
+          directement par Mobile Money.
+        </p>
+
+        <div class="hero-stats">
+          <div class="stat"><b>2 ha</b><span>Complexe médical intégré</span></div>
+          <div class="stat"><b>24/7</b><span>Urgences &amp; ambulances</span></div>
+          <div class="stat"><b>4</b><span>Pôles de soins spécialisés</span></div>
+        </div>
+
+        <div class="hero-ctas">
+          <a href="#rendez-vous" class="btn btn-primary">Prendre rendez-vous en ligne</a>
+          <a href="#poles" class="btn btn-ghost">Découvrir nos pôles</a>
+        </div>
+      </div>
+
+      <!-- Module d'orientation par symptômes -->
+      <div class="checker-card fade-up" id="symptomes">
+        <div class="ck-head">
+          <span class="ico" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6M9 5h6M12 8c-4 0-7 3-7 7a7 7 0 0014 0c0-4-3-7-7-7z"/><path d="M8.5 13.5h7"/></svg>
+          </span>
+          <div>
+            <h3>Orientation par symptômes</h3>
+            <small>Sélectionnez ce que vous ressentez — nous vous guidons vers le bon pôle.</small>
+          </div>
+        </div>
+
+        <label class="field-label" for="symptom-select">Que ressentez-vous ?</label>
+        <select id="symptom-select">
+          <option value="">— Choisissez un symptôme —</option>
+          <option value="urgence-cardio">Douleur thoracique intense / difficulté à respirer</option>
+          <option value="urgence-trauma">Saignement abondant / traumatisme grave</option>
+          <option value="urgence-neuro">Convulsions / perte de connaissance</option>
+          <option value="pediatrie-fievre">Fièvre élevée chez un enfant (moins de 15 ans)</option>
+          <option value="pediatrie-croissance">Suivi de croissance / vaccination de l'enfant</option>
+          <option value="maternite-grossesse">Suivi de grossesse / consultation prénatale</option>
+          <option value="maternite-urgence">Grossesse : contractions ou saignement</option>
+          <option value="general-fievre">Fièvre, toux ou courbatures (adulte)</option>
+          <option value="general-douleur">Douleur abdominale ou générale modérée</option>
+        </select>
+
+        <div id="symptom-result">
+          <span class="res-ico" id="symptom-res-ico">!</span>
+          <div>
+            <div class="res-title" id="symptom-res-title"></div>
+            <div class="res-text" id="symptom-res-text"></div>
+            <div class="res-call" id="symptom-res-call" style="display:none;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================
+       PÔLES MÉDICAUX
+       ================================================== -->
+  <section id="poles">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Nos pôles</span>
+        <h2>Quatre pôles, un seul campus</h2>
+        <p>Chaque pôle dispose de son propre bâtiment sur le campus JERICO, relié par des allées couvertes pensées pour la saison des pluies comme pour la chaleur.</p>
+      </div>
+      <div class="poles">
+        <div class="pole-card">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/></svg></div>
+          <h3>Médecine générale</h3>
+          <p>Consultations, suivi chronique et bilans de santé pour toute la famille.</p>
+        </div>
+        <div class="pole-card">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2c0 3-2 3-2 6a4 4 0 008 0c0-3-2-3-2-6"/><path d="M6 14c-2 1-3 3-3 6h18c0-3-1-5-3-6"/></svg></div>
+          <h3>Pédiatrie</h3>
+          <p>Vaccination, croissance et urgences pédiatriques dans un cadre rassurant.</p>
+        </div>
+        <div class="pole-card">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.35-7-10a4 4 0 017-2.65A4 4 0 0119 11c0 5.65-7 10-7 10z"/></svg></div>
+          <h3>Maternité</h3>
+          <p>Suivi de grossesse, accouchement et soins post-nataux 24h/24.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================
+       RENDEZ-VOUS (Doctolib-like) + Mobile Money
+       ================================================== -->
+  <section id="rendez-vous">
+    <div class="wrap rdv-grid">
+      <div>
+        <span class="eyebrow">Prise de rendez-vous</span>
+        <h2>Réservez en moins de 2 minutes</h2>
+        <p style="margin-top:12px;color:var(--ink-soft);font-size:16px;">
+          Choisissez un pôle, une date, puis réglez directement avec votre opérateur mobile.
+        </p>
+
+        <div class="rdv-steps" style="margin-top:30px;">
+          <div class="rdv-step">
+            <span class="n">1</span>
+            <div><b>Choisissez la spécialité et la date</b><span>Selon le pôle recommandé ou votre choix personnel.</span></div>
+          </div>
+          <div class="rdv-step">
+            <span class="n">2</span>
+            <div><b>Réglez par Mobile Money</b><span>Orange Money, Moov Money, ou paiement sur place.</span></div>
+          </div>
+          <div class="rdv-step">
+            <span class="n">3</span>
+            <div><b>Recevez votre confirmation</b><span>Un récapitulatif immédiat de votre rendez-vous.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <form id="rdv-form" novalidate>
+        <label class="field-label" for="rdv-nom">Nom complet</label>
+        <input type="text" id="rdv-nom" placeholder="Ex. Aïssata Kaboré" required>
+
+        <div class="form-row">
+          <div>
+            <label class="field-label" for="rdv-tel">Téléphone</label>
+            <input type="tel" id="rdv-tel" placeholder="+226 70 00 00 00" required>
+          </div>
+          <div>
+            <label class="field-label" for="rdv-specialite">Spécialité</label>
+            <select id="rdv-specialite" required>
+              <option value="">Choisir…</option>
+              <option value="Médecine générale">Médecine générale</option>
+              <option value="Pédiatrie">Pédiatrie</option>
+              <option value="Maternité">Maternité</option>
+              <option value="Cardiologie">Cardiologie</option>
+              <option value="Urgences">Urgences / soins non programmés</option>
+            </select>
+          </div>
+        </div>
+
+        <label class="field-label" for="rdv-date">Date souhaitée</label>
+        <input type="date" id="rdv-date" required>
+
+        <label class="field-label">Mode de paiement</label>
+        <div class="payment-group" id="payment-group">
+          <button type="button" class="pay-option" data-pay="orange">
+            <span class="pay-logo">OM</span>
+            <span>Orange Money</span>
+            <small>Paiement instantané</small>
+          </button>
+          <button type="button" class="pay-option" data-pay="moov">
+            <span class="pay-logo">MM</span>
+            <span>Moov Money</span>
+            <small>Paiement instantané</small>
+          </button>
+          <button type="button" class="pay-option" data-pay="especes">
+            <span class="pay-logo">💳</span>
+            <span>Sur place</span>
+            <small>Espèces à la clinique</small>
+          </button>
+        </div>
+
+        <div id="rdv-feedback"></div>
+
+        <button type="submit" class="btn btn-primary rdv-submit">Confirmer le rendez-vous</button>
+
+        <div id="confirmation-panel">
+          <div class="conf-title">
+            <span class="conf-check">✓</span>
+            Rendez-vous enregistré
+          </div>
+          <dl>
+            <dt>Patient</dt><dd id="conf-nom"></dd>
+            <dt>Spécialité</dt><dd id="conf-specialite"></dd>
+            <dt>Date</dt><dd id="conf-date"></dd>
+            <dt>Paiement</dt><dd id="conf-paiement"></dd>
+          </dl>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ==================================================
+       FOOTER
+       ================================================== -->
+  <footer id="contact">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="logo"><span class="mark">J</span> CLINIQUE JERICO</div>
+          <p>Campus médical de 2 hectares à Ouagadougou. Médecine générale, pédiatrie, maternité et urgences 24h/24, 7j/7.</p>
+        </div>
+        <div>
+          <h4>Liens rapides</h4>
+          <ul>
+            <li><a href="#symptomes">Orientation symptômes</a></li>
+            <li><a href="#poles">Nos pôles médicaux</a></li>
+            <li><a href="#rendez-vous">Prendre rendez-vous</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li class="mono" style="color:#aecdc9;">Ambulance : +226 70 00 12 34</li>
+            <li class="mono" style="color:#aecdc9;">Standard : +226 25 00 56 78</li>
+            <li style="color:#aecdc9;">Route de Kossodo, Ouagadougou</li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© 2026 Clinique JERICO — Burkina Faso</span>
+        <span>Site conçu pour un accès rapide depuis smartphone</span>
+      </div>
+    </div>
+  </footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- Menu mobile ---------- */
+  var burger = document.getElementById('burger-btn');
+  var menu = document.getElementById('main-menu');
+  burger.addEventListener('click', function(){
+    var isOpen = menu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  menu.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', function(){
+      menu.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  /* ---------- Module d'orientation par symptômes ---------- */
+  var SYMPTOM_DATA = {
+    "urgence-cardio": {
+      type: "danger",
+      title: "Urgence vitale détectée",
+      text: "Une douleur thoracique intense ou une difficulté à respirer peut signaler une urgence cardiaque ou respiratoire. N'attendez pas : contactez immédiatement notre service ambulancier.",
+      call: "Appelez le +226 70 00 12 34"
+    },
+    "urgence-trauma": {
+      type: "danger",
+      title: "Urgence vitale détectée",
+      text: "Un saignement abondant ou un traumatisme grave nécessite une prise en charge immédiate aux urgences de JERICO.",
+      call: "Appelez le +226 70 00 12 34"
+    },
+    "urgence-neuro": {
+      type: "danger",
+      title: "Urgence vitale détectée",
+      text: "Des convulsions ou une perte de connaissance sont des signes d'urgence neurologique. Une ambulance doit être contactée sans délai.",
+      call: "Appelez le +226 70 00 12 34"
+    },
+    "pediatrie-fievre": {
+      type: "ok",
+      title: "Pôle recommandé : Pédiatrie",
+      text: "Une fièvre élevée chez un enfant doit être évaluée rapidement par notre pôle Pédiatrie. Prenez rendez-vous ci-dessous ou présentez-vous directement si la fièvre dépasse 39°C."
+    },
+    "pediatrie-croissance": {
+      type: "ok",
+      title: "Pôle recommandé : Pédiatrie",
+      text: "Le suivi de croissance et la vaccination sont assurés par notre pôle Pédiatrie, sur rendez-vous programmé."
+    },
+    "maternite-grossesse": {
+      type: "ok",
+      title: "Pôle recommandé : Maternité",
+      text: "Le suivi de grossesse et les consultations prénatales sont assurés par notre pôle Maternité tout au long de votre grossesse."
+    },
+    "maternite-urgence": {
+      type: "danger",
+      title: "Urgence vitale détectée",
+      text: "Des contractions ou un saignement pendant la grossesse nécessitent une prise en charge immédiate par notre pôle Maternité.",
+      call: "Appelez le +226 70 00 12 34"
+    },
+    "general-fievre": {
+      type: "ok",
+      title: "Pôle recommandé : Médecine générale",
+      text: "Fièvre, toux ou courbatures relèvent généralement de notre pôle de Médecine générale. Prenez rendez-vous pour une consultation."
+    },
+    "general-douleur": {
+      type: "ok",
+      title: "Pôle recommandé : Médecine générale",
+      text: "Une douleur abdominale ou générale modérée peut être évaluée par notre pôle de Médecine générale."
+    }
+  };
+
+  var symptomSelect = document.getElementById('symptom-select');
+  var resultBox = document.getElementById('symptom-result');
+  var resIco = document.getElementById('symptom-res-ico');
+  var resTitle = document.getElementById('symptom-res-title');
+  var resText = document.getElementById('symptom-res-text');
+  var resCall = document.getElementById('symptom-res-call');
+
+  symptomSelect.addEventListener('change', function(){
+    var key = symptomSelect.value;
+    if(!key){
+      resultBox.classList.remove('show','ok','danger');
+      return;
+    }
+    var data = SYMPTOM_DATA[key];
+    resultBox.classList.remove('ok','danger');
+    resultBox.classList.add('show', data.type);
+    resIco.textContent = data.type === 'danger' ? '!' : '✓';
+    resTitle.textContent = data.title;
+    resText.textContent = data.text;
+    if(data.call){
+      resCall.style.display = 'inline-flex';
+      resCall.textContent = data.call;
+    } else {
+      resCall.style.display = 'none';
+    }
+  });
+
+  /* ---------- Sélection du moyen de paiement ---------- */
+  var paymentGroup = document.getElementById('payment-group');
+  var selectedPayment = null;
+
+  paymentGroup.querySelectorAll('.pay-option').forEach(function(opt){
+    opt.addEventListener('click', function(){
+      paymentGroup.querySelectorAll('.pay-option').forEach(function(o){ o.classList.remove('selected'); });
+      opt.classList.add('selected');
+      selectedPayment = opt.getAttribute('data-pay');
+      document.getElementById('rdv-feedback').textContent = '';
+    });
+  });
+
+  var PAYMENT_LABELS = {
+    orange: "Orange Money",
+    moov: "Moov Money",
+    especes: "Paiement sur place"
+  };
+
+  /* ---------- Validation du formulaire de rendez-vous ---------- */
+  var rdvForm = document.getElementById('rdv-form');
+  var feedback = document.getElementById('rdv-feedback');
+  var confirmPanel = document.getElementById('confirmation-panel');
+
+  rdvForm.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    var nom = document.getElementById('rdv-nom').value.trim();
+    var tel = document.getElementById('rdv-tel').value.trim();
+    var specialite = document.getElementById('rdv-specialite').value;
+    var date = document.getElementById('rdv-date').value;
+
+    if(!nom || !tel || !specialite || !date){
+      feedback.textContent = "Veuillez remplir tous les champs avant de confirmer.";
+      confirmPanel.classList.remove('show');
+      return;
+    }
+    if(!selectedPayment){
+      feedback.textContent = "Veuillez choisir un mode de paiement (Orange Money, Moov Money ou sur place).";
+      confirmPanel.classList.remove('show');
+      return;
+    }
+
+    feedback.textContent = '';
+
+    var dateObj = new Date(date + 'T00:00:00');
+    var dateLisible = dateObj.toLocaleDateString('fr-FR', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+
+    document.getElementById('conf-nom').textContent = nom;
+    document.getElementById('conf-specialite').textContent = specialite;
+    document.getElementById('conf-date').textContent = dateLisible;
+    document.getElementById('conf-paiement').textContent = PAYMENT_LABELS[selectedPayment];
+
+    confirmPanel.classList.add('show');
+    confirmPanel.scrollIntoView({ behavior:'smooth', block:'nearest' });
+  });
+
+})();
+</script>
+
+</body>
+</html>
