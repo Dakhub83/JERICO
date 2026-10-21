@@ -3,22 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clinique JERICO — Soins modernes au Burkina Faso</title>
+<title>Polyclinic JERICO — Soins modernes au Burkina Faso</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%2312473a'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 29H47'/%3E%3Cpath d='M32 13V39C32 46.5 27 50.5 20.5 48.5'/%3E%3C/g%3E%3Cpath d='M41 14C49 11 54 15 53 21C46 23 41 20 41 14Z' fill='%23b9dcc2'/%3E%3C/svg%3E">
 <style>
 
   /* ====================================================
      TOKENS
      ==================================================== */
   :root{
-    --emerald-900:#0b4a44;
-    --emerald-700:#0f766e;
-    --emerald-600:#13877e;
-    --emerald-100:#e4f4f1;
-    --emerald-50:#f3faf8;
+    --emerald-900:#0a2e24;
+    --emerald-700:#12473a;
+    --emerald-600:#2c6150;
+    --emerald-100:#e3eadf;
+    --emerald-50:#f0f3ec;
     --white:#ffffff;
-    --ink:#0d1f1c;
-    --ink-soft:#4a5b58;
-    --line:#dde8e5;
+    --cream:#faf8f3;
+    --ink:#13261f;
+    --ink-soft:#55625c;
+    --line:#e4e2da;
     --urgence:#dc2626;
     --urgence-dark:#991b1b;
     --orange-money:#ff6a00;
@@ -26,7 +28,7 @@
     --radius-s:8px;
     --radius-m:14px;
     --radius-l:22px;
-    --shadow-card:0 10px 30px -12px rgba(15,118,110,0.22);
+    --shadow-card:0 10px 30px -12px rgba(10,46,36,0.16);
     --font-display:'Manrope',system-ui,-apple-system,Segoe UI,sans-serif;
     --font-body:'Work Sans',system-ui,-apple-system,Segoe UI,sans-serif;
     --font-mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
@@ -37,7 +39,7 @@
   body{
     font-family:var(--font-body);
     color:var(--ink);
-    background:var(--white);
+    background:var(--cream);
     -webkit-font-smoothing:antialiased;
     line-height:1.5;
     padding-bottom: env(safe-area-inset-bottom,0px);
@@ -110,7 +112,7 @@
     position:sticky;
     top:calc(env(safe-area-inset-top,0px) + 38px);
     z-index:90;
-    background:rgba(255,255,255,0.92);
+    background:rgba(250,248,243,0.92);
     backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);
   }
@@ -134,26 +136,15 @@
   .logo .text{min-width:0;overflow:hidden;}
   .logo .name{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
   .logo .mark{
-    width:34px;height:34px;
-    border-radius:10px;
+    width:36px;height:36px;
+    border-radius:9px;
     background:var(--emerald-700);
     display:flex;align-items:center;justify-content:center;
     color:var(--white);
     font-size:17px;
     flex-shrink:0;
   }
-  .logo .sub{
-    display:block;
-    font-family:var(--font-body);
-    font-weight:500;
-    font-size:10.5px;
-    color:var(--ink-soft);
-    letter-spacing:.04em;
-    text-transform:uppercase;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
-  }
+  .logo .mark svg{width:100%;height:100%;display:block;}
   nav.menu{
     display:flex;
     gap:26px;
@@ -174,7 +165,7 @@
     transition:transform .15s, box-shadow .15s, background .15s;
   }
   .btn:active{transform:translateY(1px) scale(.98);}
-  .btn-primary{background:var(--emerald-700);color:var(--white);box-shadow:0 8px 20px -8px rgba(15,118,110,.55);}
+  .btn-primary{background:var(--emerald-700);color:var(--white);box-shadow:0 8px 20px -8px rgba(10,46,36,.45);}
   .btn-primary:hover{background:var(--emerald-900);}
   .btn-ghost{background:var(--emerald-50);color:var(--emerald-900);}
   .btn-ghost:hover{background:var(--emerald-100);}
@@ -186,7 +177,7 @@
     nav.menu{
       position:absolute;
       top:100%;left:0;right:0;
-      background:var(--white);
+      background:var(--cream);
       border-bottom:1px solid var(--line);
       flex-direction:column;
       padding:16px 20px 20px;
@@ -209,7 +200,7 @@
   .hero{
     background:
       radial-gradient(circle at 85% -10%, var(--emerald-100) 0%, transparent 55%),
-      var(--white);
+      var(--cream);
     padding-block:52px 68px;
   }
   .hero-grid{
@@ -317,7 +308,7 @@
     box-shadow:0 0 0 3px var(--emerald-100);
   }
   select{
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%234a5b58' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%2355625c' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     background-repeat:no-repeat;
     background-position:right 14px center;
     padding-right:36px;
@@ -386,6 +377,58 @@
   }
   .pole-card h3{font-size:16.5px;color:var(--emerald-900);margin-bottom:8px;}
   .pole-card p{font-size:13.5px;color:var(--ink-soft);}
+
+  /* ====================================================
+     SPÉCIALITÉS
+     ==================================================== */
+  #specialites{background:var(--white);}
+  .specialites{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+    gap:14px;
+  }
+  .spe-card{
+    border:1px solid var(--line);
+    border-radius:var(--radius-m);
+    padding:10px 10px 18px;
+    background:var(--cream);
+    transition:border-color .2s, box-shadow .2s, transform .2s;
+  }
+  .spe-card:hover{border-color:var(--emerald-600);box-shadow:var(--shadow-card);transform:translateY(-2px);}
+  .spe-visual{
+    position:relative;
+    height:116px;
+    border-radius:10px;
+    background:
+      radial-gradient(circle at 50% 55%, rgba(255,255,255,.75) 0, transparent 62%),
+      var(--emerald-100);
+    color:var(--emerald-700);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:14px;
+    overflow:hidden;
+  }
+  .spe-visual svg{width:68px;height:68px;transition:transform .25s ease;}
+  .spe-visual .s{fill:var(--white);}
+  .spe-visual .s-stroke{stroke:var(--white);}
+  .spe-card:hover .spe-visual svg{transform:scale(1.08);}
+  .spe-card .idx{
+    position:absolute;
+    top:9px;
+    left:11px;
+    font-family:var(--font-mono);
+    font-size:11.5px;
+    color:var(--emerald-600);
+    letter-spacing:.04em;
+  }
+  .spe-card h3, .spe-card p{padding-inline:8px;}
+  .spe-card h3{font-size:15.5px;color:var(--emerald-900);margin:0 0 4px;}
+  .spe-card p{font-size:13px;color:var(--ink-soft);}
+  @media (prefers-reduced-motion: reduce){
+    .spe-card, .spe-visual svg{transition:none;}
+    .spe-card:hover, .spe-card:hover .spe-visual svg{transform:none;}
+  }
 
   /* ====================================================
      RENDEZ-VOUS (style Doctolib)
@@ -464,6 +507,44 @@
 
   .rdv-submit{width:100%;justify-content:center;margin-top:22px;font-size:15.5px;padding:13px 20px;}
 
+  /* ====================================================
+     FENÊTRE DE PAIEMENT
+     ==================================================== */
+  #payment-dialog{
+    width:min(480px, calc(100% - 32px));
+    max-height:calc(100dvh - 32px);
+    padding:0;
+    border:none;
+    border-radius:var(--radius-l);
+    background:var(--white);
+    color:var(--ink);
+    box-shadow:0 30px 60px -20px rgba(10,46,36,.45);
+  }
+  #payment-dialog[open]{animation:alertPop .25s ease;}
+  #payment-dialog::backdrop{background:rgba(10,46,36,.55);backdrop-filter:blur(3px);}
+  .pay-dialog-inner{padding:26px;}
+  .pay-dialog-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
+  .pay-step{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--emerald-600);}
+  .pay-dialog-head h3{font-size:20px;color:var(--emerald-900);margin-top:4px;}
+  .pay-close{
+    background:var(--emerald-50);border:none;border-radius:50%;
+    width:34px;height:34px;flex-shrink:0;
+    font-size:20px;line-height:1;color:var(--emerald-900);
+  }
+  .pay-close:hover{background:var(--emerald-100);}
+  .pay-recap{
+    display:grid;grid-template-columns:auto 1fr;gap:4px 12px;
+    margin:18px 0 20px;padding:14px 16px;
+    background:var(--cream);border:1px solid var(--line);border-radius:var(--radius-m);
+    font-size:13px;
+  }
+  .pay-recap dt{color:var(--ink-soft);}
+  .pay-recap dd{margin:0;font-weight:600;}
+  #pay-feedback{margin-top:10px;font-size:12.5px;color:var(--urgence-dark);min-height:16px;}
+  .pay-actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;}
+  .pay-actions .btn{flex:1;justify-content:center;white-space:nowrap;}
+  .pay-actions .btn-primary{flex:2;}
+
   #confirmation-panel{
     margin-top:18px;
     border-radius:var(--radius-m);
@@ -490,7 +571,7 @@
      ==================================================== */
   footer{
     background:var(--emerald-900);
-    color:#d8ebe8;
+    color:#e6ece6;
     padding-block:44px 28px;
     margin-top:20px;
   }
@@ -502,17 +583,17 @@
   @media (max-width:760px){.foot-grid{grid-template-columns:1fr;}}
   footer h4{font-family:var(--font-display);color:var(--white);font-size:14px;margin-bottom:12px;}
   footer .logo{color:var(--white);margin-bottom:10px;}
-  footer .logo .mark{background:rgba(255,255,255,.15);}
-  footer p{font-size:13.5px;color:#aecdc9;line-height:1.6;}
+  footer .logo .mark{background:var(--emerald-700);box-shadow:0 0 0 1px rgba(255,255,255,.18);}
+  footer p{font-size:13.5px;color:#b9c8bf;line-height:1.6;}
   footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;}
-  footer ul a{font-size:13.5px;color:#aecdc9;}
+  footer ul a{font-size:13.5px;color:#b9c8bf;}
   footer ul a:hover{color:var(--white);}
   .foot-bottom{
     border-top:1px solid rgba(255,255,255,.12);
     margin-top:34px;
     padding-top:18px;
     font-size:12px;
-    color:#86a8a3;
+    color:#8fa398;
     display:flex;
     justify-content:space-between;
     flex-wrap:wrap;
@@ -539,10 +620,9 @@
   <header>
     <div class="wrap nav-row">
       <div class="logo">
-        <span class="mark">J</span>
+        <span class="mark"><svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"><path d="M17 29H47"/><path d="M32 13V39C32 46.5 27 50.5 20.5 48.5"/></g><path d="M41 14C49 11 54 15 53 21C46 23 41 20 41 14Z" fill="#b9dcc2"/></svg></span>
         <span class="text">
-          <span class="name">CLINIQUE JERICO</span>
-          <span class="sub">Ouagadougou · Burkina Faso</span>
+          <span class="name">POLYCLINIC JERICO</span>
         </span>
       </div>
 
@@ -550,11 +630,12 @@
         <a href="#accueil">Accueil</a>
         <a href="#symptomes">Orientation symptômes</a>
         <a href="#poles">Pôles médicaux</a>
+        <a href="#specialites">Spécialités</a>
         <a href="#rendez-vous">Rendez-vous</a>
         <a href="#contact">Contact</a>
       </nav>
 
-      <div style="display:flex;align-items:center;gap:8px;">
+      <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
         <a href="#rendez-vous" class="btn btn-primary header-cta">
           <span class="btn-label-full">Prendre</span> rendez-vous
         </a>
@@ -574,7 +655,7 @@
         <span class="eyebrow">2 hectares dédiés à votre santé</span>
         <h1>Une médecine moderne, <em>pensée pour le Burkina Faso</em>.</h1>
         <p class="lead">
-          La Clinique JERICO réunit sur un seul site de 2 hectares à Ouagadougou la médecine générale,
+          La Polyclinic JERICO réunit sur un seul site de 2 hectares à Ouagadougou la médecine générale,
           la pédiatrie, la maternité et les urgences — avec des rendez-vous pris en ligne et payés
           directement par Mobile Money.
         </p>
@@ -582,7 +663,7 @@
         <div class="hero-stats">
           <div class="stat"><b>2 ha</b><span>Complexe médical intégré</span></div>
           <div class="stat"><b>24/7</b><span>Urgences &amp; ambulances</span></div>
-          <div class="stat"><b>4</b><span>Pôles de soins spécialisés</span></div>
+          <div class="stat"><b>14</b><span>Spécialités médicales</span></div>
         </div>
 
         <div class="hero-ctas">
@@ -660,6 +741,77 @@
   </section>
 
   <!-- ==================================================
+       SPÉCIALITÉS
+       ================================================== -->
+  <section id="specialites">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Spécialités</span>
+        <h2>Nos spécialités médicales et chirurgicales</h2>
+        <p>Des médecins spécialistes consultent sur le campus JERICO. Prenez rendez-vous directement avec la spécialité dont vous avez besoin.</p>
+      </div>
+      <div class="specialites">
+        <div class="spe-card">
+          <div class="spe-visual" aria-hidden="true"><span class="idx">01</span><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path class="s" d="M32 54C14 42 6 32 6 21A12 12 0 0 1 32 15A12 12 0 0 1 58 21C58 32 50 42 32 54Z"/><path d="M12 30H22L26 22L31 38L35 28L38 30H52"/></svg></div>
+          <h3>Cardiologie</h3><p>Cœur, tension artérielle et troubles du rythme.</p>
+        </div>
+        <div class="spe-card">
+          <div class="spe-visual" aria-hidden="true"><span class="idx">02</span><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M28 6V26M36 6V26M28 11H36M28 16H36"/><path class="s" d="M30 30C26 18 14 14 12 24C10 36 18 46 28 44C31 43 32 38 30 30Z"/><path class="s" d="M34 30C38 18 50 14 52 24C54 36 46 46 36 44C33 43 32 38 34 30Z"/><path d="M29 35H35"/></svg></div>
+          <h3>Endocrinologie</h3><p>Diabète, thyroïde et troubles hormonaux.</p>
+        </div>
+        <div class="spe-card">
+          <div class="spe-visual" aria-hidden="true"><span class="idx">03</span><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M29 16C20 13 11 17 11 25M29 24C20 21 11 25 12 33M29 32C21 29 13 33 15 41M35 16C44 13 53 17 53 25M35 24C44 21 53 25 52 33M35 32C43 29 51 33 49 41"/><path class="s" d="M29 9H35V37H29Z"/><path class="s" d="M32 56C25 51 21 47 21 43A4.5 4.5 0 0 1 32 41A4.5 4.5 0 0 1 43 43C43 47 39 51 32 56Z"/></svg></div>
+          <h3>Chirurgie cardiovasculaire et thoracique</h3><p>Chirurgie du cœur, des vaisseaux et du thorax.</p>
+        </div>
+        <div class="spe-card">
+          <div class="spe-visual" aria-hidden="true"><span class="idx">04</span><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M24 20C18 14 12 16 10 22M40 20C46 14 52 16 54 22"/><circle class="s" cx="10" cy="27" r="4"/><circle class="s" cx="54" cy="27" r="4"/><path class="s" d="M22 22C22 16 42 16 42 22C42 34 36 40 35 46H29C28 40 22 34 22 22Z"/><path d="M29 46V52H35V46"/></svg></div>
+          <h3>Gynécologie-Obstétrique</h3><p>Santé de la femme, grossesse et accouchement.</p>
+        </div>
+        <div class="spe-card">
+          <div class="spe-visual" aria-hidden="true"><span class="idx">05</span><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path class="s" d="M22 44C22 52 31 56 37 50C41 46 39 40 43 34C49 26 47 12 35 10C25 8 19 16 19 24C19 30 22 32 22 38Z"/><path d="M27 24C27 18 35 16 38 22C40 27 35 28 33 32C32 35 35 38 32 40"/><path d="M52 24C55 28 55 34 52 38M57 19C62 26 62 36 57 43"/></svg></div>
+          <h3>ORL et chirurgie maxillo-faciale</h3><p>Oreilles, nez, gorge, visage et mâchoires.</p>
+        </div>
+        <div class="spe-card">
+          <div class="spe-visual" aria-hidden="true"><span class="idx">06</span><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path class="s" d="M26 8V18C26 24 16 26 16 38C16 50 28 56 38 52C46 49 50 42 46 36C43 32 38 34 36 38C34 42 30 40 31 34C32 28 36 24 36 18V8Z"/><path d="M46 36C51 38 55 42 53 48"/><path d="M22 40C24 46 30 48 34 47"/></svg></div>
+          <h3>Hépato-gastro-entérologie</h3><p>Foie, estomac, intestins et appareil digestif.</p>
+        </div>
+        <div class="spe-card">
+          <div class="spe-visual" aria-hidden="true"><span class="idx">07</span><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(-35 32 32)"><g stroke-width="5"><rect x="16" y="29" width="32" height="6"/><circle cx="14" cy="27" r="5"/><circle cx="14" cy="37" r="5"/><circle cx="50" cy="27" r="5"/><circle cx="50" cy="37" r="5"/></g><g class="s" stroke="none"><rect x="16" y="29" width="32" height="6"/><circle cx="14" cy="27" r="5"/><circle cx="14" cy="37" r="5"/><circle cx="50" cy="27" r="5"/><circle cx="50" cy="37" r="5"/></g></g></svg></div>
+          <h3>Chirurgie orthopédique</h3><p>Os, articulations, fractures et traumatismes.</p>
+        </div>
+        <div class="spe-card">
+          <div class="spe-visual" aria-hidden="true"><span class="idx">08</span><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M25 32C30 36 30 44 30 50M39 32C34 36 34 44 34 50"/><path class="s" d="M22 14C12 14 8 24 10 34C12 44 22 46 26 40C28 36 24 32 24 28C24 24 28 20 27 17C26 15 24 14 22 14Z"/><path class="s" d="M42 14C52 14 56 24 54 34C52 44 42 46 38 40C36 36 40 32 40 28C40 24 36 20 37 17C38 15 40 14 42 14Z"/><path class="s" d="M25 50H39C39 58 25 58 25 50Z"/></svg></div>
+          <h3>Néphrologie</h3><p>Reins, insuffisance rénale et hypertension.</p>
+        </div>
+        <div class="spe-card">
+          <div class="spe-visual" aria-hidden="true"><span class="idx">09</span><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path class="s" d="M6 24C14 20 20 28 28 24C36 20 42 28 50 24C54 22 56 23 58 24V54H6Z"/><path d="M6 36C20 34 44 38 58 36M6 46C20 44 44 48 58 46"/><path d="M26 44C25 36 27 30 26 23L31 9"/><circle class="s" cx="26" cy="46" r="3.5"/><path d="M44 40V40.1M14 50V50.1M48 50V50.1"/></svg></div>
+          <h3>Dermatologie</h3><p>Peau, cheveux et ongles.</p>
+        </div>
+        <div class="spe-card">
+          <div class="spe-visual" aria-hidden="true"><span class="idx">10</span><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path class="s" d="M20 46C10 46 6 38 9 31C6 24 12 16 20 17C22 10 32 8 37 13C44 9 54 14 53 22C59 27 57 37 50 40C50 46 42 49 37 46C33 50 25 50 20 46Z"/><path d="M20 17C24 22 22 28 26 30M37 13C34 18 38 22 34 26M53 22C46 22 46 30 40 30M30 30C30 36 36 38 37 46M9 31C16 32 18 38 24 38M40 47C42 52 44 54 44 58"/></svg></div>
+          <h3>Neurologie</h3><p>Cerveau, nerfs, épilepsie et AVC.</p>
+        </div>
+        <div class="spe-card">
+          <div class="spe-visual" aria-hidden="true"><span class="idx">11</span><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><g stroke-width="8"><path d="M14 52V18C14 14 18 12 22 12H42C46 12 50 14 50 18V52"/></g><g class="s-stroke" stroke-width="3.5"><path d="M14 52V18C14 14 18 12 22 12H42C46 12 50 14 50 18V52"/></g><path d="M22 22H40C44 22 44 28 40 28H24C20 28 20 34 24 34H40C44 34 44 40 40 40H26C22 40 22 46 26 46H34"/></svg></div>
+          <h3>Chirurgie viscérale et digestive</h3><p>Chirurgie de l'abdomen et des organes digestifs.</p>
+        </div>
+        <div class="spe-card">
+          <div class="spe-visual" aria-hidden="true"><span class="idx">12</span><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path class="s" d="M3 32C9 22 25 22 31 32C25 42 9 42 3 32Z"/><circle cx="17" cy="32" r="5"/><circle cx="17" cy="32" r="1.5" fill="currentColor"/><path class="s" d="M45 27C39 25 36 35 36 44C36 50 45 50 45 44Z"/><path class="s" d="M51 27C57 25 60 35 60 44C60 50 51 50 51 44Z"/><path d="M48 12V24M48 24L45 28M48 24L51 28"/></svg></div>
+          <h3>Ophtalmologie et pneumologie</h3><p>Yeux et vision · Poumons et voies respiratoires.</p>
+        </div>
+        <div class="spe-card">
+          <div class="spe-visual" aria-hidden="true"><span class="idx">13</span><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="22" stroke-dasharray="4 5"/><path d="M32 4V14M32 50V60M4 32H14M50 32H60"/><path class="s" d="M32 22C38 21 43 26 42 32C41 38 37 43 31 42C25 41 21 36 22 30C23 25 27 22 32 22Z"/><circle cx="33" cy="31" r="4"/></svg></div>
+          <h3>Oncologie et radiothérapie</h3><p>Diagnostic et traitement des cancers.</p>
+        </div>
+        <div class="spe-card">
+          <div class="spe-visual" aria-hidden="true"><span class="idx">14</span><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path class="s" d="M13 6V18C9 20 9 26 13 27C15 27.5 16 26 17 26C18 26 19 27.5 21 27C25 26 25 20 21 18V6Z"/><path class="s" d="M10 33C12 32 22 32 24 33C24 36 22 38 21 40V54H13V40C12 38 10 36 10 33Z"/><path d="M27 34C30 30 30 26 27 23"/><path class="s" d="M46 14C46 14 35 28 35 37A11 11 0 0 0 57 37C57 28 46 14 46 14Z"/><path d="M41 39A5 5 0 0 0 46 44"/></svg></div>
+          <h3>Rhumatologie et urologie</h3><p>Articulations et os · Voies urinaires et prostate.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================
        RENDEZ-VOUS (Doctolib-like) + Mobile Money
        ================================================== -->
   <section id="rendez-vous">
@@ -700,11 +852,28 @@
             <label class="field-label" for="rdv-specialite">Spécialité</label>
             <select id="rdv-specialite" required>
               <option value="">Choisir…</option>
-              <option value="Médecine générale">Médecine générale</option>
-              <option value="Pédiatrie">Pédiatrie</option>
-              <option value="Maternité">Maternité</option>
-              <option value="Cardiologie">Cardiologie</option>
-              <option value="Urgences">Urgences / soins non programmés</option>
+              <optgroup label="Pôles">
+                <option value="Médecine générale">Médecine générale</option>
+                <option value="Pédiatrie">Pédiatrie</option>
+                <option value="Maternité">Maternité</option>
+                <option value="Urgences">Urgences / soins non programmés</option>
+              </optgroup>
+              <optgroup label="Spécialités">
+                <option value="Cardiologie">Cardiologie</option>
+                <option value="Endocrinologie">Endocrinologie</option>
+                <option value="Chirurgie cardiovasculaire et thoracique">Chirurgie cardiovasculaire et thoracique</option>
+                <option value="Gynécologie-Obstétrique">Gynécologie-Obstétrique</option>
+                <option value="ORL et chirurgie maxillo-faciale">ORL et chirurgie maxillo-faciale</option>
+                <option value="Hépato-gastro-entérologie">Hépato-gastro-entérologie</option>
+                <option value="Chirurgie orthopédique">Chirurgie orthopédique</option>
+                <option value="Néphrologie">Néphrologie</option>
+                <option value="Dermatologie">Dermatologie</option>
+                <option value="Neurologie">Neurologie</option>
+                <option value="Chirurgie viscérale et digestive">Chirurgie viscérale et digestive</option>
+                <option value="Ophtalmologie et pneumologie">Ophtalmologie et pneumologie</option>
+                <option value="Oncologie et radiothérapie">Oncologie et radiothérapie</option>
+                <option value="Rhumatologie et urologie">Rhumatologie et urologie</option>
+              </optgroup>
             </select>
           </div>
         </div>
@@ -712,28 +881,9 @@
         <label class="field-label" for="rdv-date">Date souhaitée</label>
         <input type="date" id="rdv-date" required>
 
-        <label class="field-label">Mode de paiement</label>
-        <div class="payment-group" id="payment-group">
-          <button type="button" class="pay-option" data-pay="orange">
-            <span class="pay-logo">OM</span>
-            <span>Orange Money</span>
-            <small>Paiement instantané</small>
-          </button>
-          <button type="button" class="pay-option" data-pay="moov">
-            <span class="pay-logo">MM</span>
-            <span>Moov Money</span>
-            <small>Paiement instantané</small>
-          </button>
-          <button type="button" class="pay-option" data-pay="especes">
-            <span class="pay-logo">💳</span>
-            <span>Sur place</span>
-            <small>Espèces à la clinique</small>
-          </button>
-        </div>
-
         <div id="rdv-feedback"></div>
 
-        <button type="submit" class="btn btn-primary rdv-submit">Confirmer le rendez-vous</button>
+        <button type="submit" class="btn btn-primary rdv-submit">Continuer vers le paiement →</button>
 
         <div id="confirmation-panel">
           <div class="conf-title">
@@ -752,13 +902,59 @@
   </section>
 
   <!-- ==================================================
+       FENÊTRE DE PAIEMENT
+       ================================================== -->
+  <dialog id="payment-dialog" aria-labelledby="pay-dialog-title">
+    <div class="pay-dialog-inner">
+      <div class="pay-dialog-head">
+        <div>
+          <span class="pay-step">Étape 2 sur 3</span>
+          <h3 id="pay-dialog-title">Mode de paiement</h3>
+        </div>
+        <button type="button" class="pay-close" id="pay-close" aria-label="Fermer">×</button>
+      </div>
+  
+      <dl class="pay-recap">
+        <dt>Patient</dt><dd id="recap-nom"></dd>
+        <dt>Spécialité</dt><dd id="recap-specialite"></dd>
+        <dt>Date</dt><dd id="recap-date"></dd>
+      </dl>
+  
+      <div class="payment-group" id="payment-group">
+        <button type="button" class="pay-option" data-pay="orange">
+          <span class="pay-logo">OM</span>
+          <span>Orange Money</span>
+          <small>Paiement instantané</small>
+        </button>
+        <button type="button" class="pay-option" data-pay="moov">
+          <span class="pay-logo">MM</span>
+          <span>Moov Money</span>
+          <small>Paiement instantané</small>
+        </button>
+        <button type="button" class="pay-option" data-pay="especes">
+          <span class="pay-logo">💳</span>
+          <span>Sur place</span>
+          <small>Espèces à la clinique</small>
+        </button>
+      </div>
+  
+      <div id="pay-feedback"></div>
+  
+      <div class="pay-actions">
+        <button type="button" class="btn btn-ghost" id="pay-back">← Modifier</button>
+        <button type="button" class="btn btn-primary" id="pay-confirm">Confirmer le rendez-vous</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ==================================================
        FOOTER
        ================================================== -->
   <footer id="contact">
     <div class="wrap">
       <div class="foot-grid">
         <div>
-          <div class="logo"><span class="mark">J</span> CLINIQUE JERICO</div>
+          <div class="logo"><span class="mark"><svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"><path d="M17 29H47"/><path d="M32 13V39C32 46.5 27 50.5 20.5 48.5"/></g><path d="M41 14C49 11 54 15 53 21C46 23 41 20 41 14Z" fill="#b9dcc2"/></svg></span> POLYCLINIC JERICO</div>
           <p>Campus médical de 2 hectares à Ouagadougou. Médecine générale, pédiatrie, maternité et urgences 24h/24, 7j/7.</p>
         </div>
         <div>
@@ -766,20 +962,21 @@
           <ul>
             <li><a href="#symptomes">Orientation symptômes</a></li>
             <li><a href="#poles">Nos pôles médicaux</a></li>
+            <li><a href="#specialites">Nos spécialités</a></li>
             <li><a href="#rendez-vous">Prendre rendez-vous</a></li>
           </ul>
         </div>
         <div>
           <h4>Contact</h4>
           <ul>
-            <li class="mono" style="color:#aecdc9;">Ambulance : +226 70 00 12 34</li>
-            <li class="mono" style="color:#aecdc9;">Standard : +226 25 00 56 78</li>
-            <li style="color:#aecdc9;">Route de Kossodo, Ouagadougou</li>
+            <li class="mono" style="color:#b9c8bf;">Ambulance : +226 70 00 12 34</li>
+            <li class="mono" style="color:#b9c8bf;">Standard : +226 25 00 56 78</li>
+            <li style="color:#b9c8bf;">Route de Kossodo, Ouagadougou</li>
           </ul>
         </div>
       </div>
       <div class="foot-bottom">
-        <span>© 2026 Clinique JERICO — Burkina Faso</span>
+        <span>© 2026 Polyclinic JERICO — Burkina Faso</span>
         <span>Site conçu pour un accès rapide depuis smartphone</span>
       </div>
     </div>
@@ -885,6 +1082,7 @@
 
   /* ---------- Sélection du moyen de paiement ---------- */
   var paymentGroup = document.getElementById('payment-group');
+  var payFeedback = document.getElementById('pay-feedback');
   var selectedPayment = null;
 
   paymentGroup.querySelectorAll('.pay-option').forEach(function(opt){
@@ -892,7 +1090,7 @@
       paymentGroup.querySelectorAll('.pay-option').forEach(function(o){ o.classList.remove('selected'); });
       opt.classList.add('selected');
       selectedPayment = opt.getAttribute('data-pay');
-      document.getElementById('rdv-feedback').textContent = '';
+      payFeedback.textContent = '';
     });
   });
 
@@ -902,10 +1100,12 @@
     especes: "Paiement sur place"
   };
 
-  /* ---------- Validation du formulaire de rendez-vous ---------- */
+  /* ---------- Étape 1 : formulaire de rendez-vous ---------- */
   var rdvForm = document.getElementById('rdv-form');
   var feedback = document.getElementById('rdv-feedback');
   var confirmPanel = document.getElementById('confirmation-panel');
+  var payDialog = document.getElementById('payment-dialog');
+  var rdv = null;
 
   rdvForm.addEventListener('submit', function(e){
     e.preventDefault();
@@ -916,26 +1116,49 @@
     var date = document.getElementById('rdv-date').value;
 
     if(!nom || !tel || !specialite || !date){
-      feedback.textContent = "Veuillez remplir tous les champs avant de confirmer.";
-      confirmPanel.classList.remove('show');
-      return;
-    }
-    if(!selectedPayment){
-      feedback.textContent = "Veuillez choisir un mode de paiement (Orange Money, Moov Money ou sur place).";
+      feedback.textContent = "Veuillez remplir tous les champs avant de continuer.";
       confirmPanel.classList.remove('show');
       return;
     }
 
     feedback.textContent = '';
+    confirmPanel.classList.remove('show');
 
     var dateObj = new Date(date + 'T00:00:00');
-    var dateLisible = dateObj.toLocaleDateString('fr-FR', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+    rdv = {
+      nom: nom,
+      specialite: specialite,
+      date: dateObj.toLocaleDateString('fr-FR', { weekday:'long', day:'numeric', month:'long', year:'numeric' })
+    };
 
-    document.getElementById('conf-nom').textContent = nom;
-    document.getElementById('conf-specialite').textContent = specialite;
-    document.getElementById('conf-date').textContent = dateLisible;
+    document.getElementById('recap-nom').textContent = rdv.nom;
+    document.getElementById('recap-specialite').textContent = rdv.specialite;
+    document.getElementById('recap-date').textContent = rdv.date;
+    payFeedback.textContent = '';
+    payDialog.showModal();
+  });
+
+  /* ---------- Étape 2 : fenêtre de paiement ---------- */
+  function closePayDialog(){ payDialog.close(); }
+  document.getElementById('pay-close').addEventListener('click', closePayDialog);
+  document.getElementById('pay-back').addEventListener('click', closePayDialog);
+  payDialog.addEventListener('click', function(e){
+    if(e.target === payDialog){ closePayDialog(); }
+  });
+
+  /* ---------- Étape 3 : confirmation ---------- */
+  document.getElementById('pay-confirm').addEventListener('click', function(){
+    if(!selectedPayment){
+      payFeedback.textContent = "Veuillez choisir un mode de paiement (Orange Money, Moov Money ou sur place).";
+      return;
+    }
+
+    document.getElementById('conf-nom').textContent = rdv.nom;
+    document.getElementById('conf-specialite').textContent = rdv.specialite;
+    document.getElementById('conf-date').textContent = rdv.date;
     document.getElementById('conf-paiement').textContent = PAYMENT_LABELS[selectedPayment];
 
+    closePayDialog();
     confirmPanel.classList.add('show');
     confirmPanel.scrollIntoView({ behavior:'smooth', block:'nearest' });
   });

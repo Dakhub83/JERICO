@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 80" width="600" height="160">
+  <title>Polyclinic JERICO</title>
+  <g transform="translate(8 8)">
+    <rect width="64" height="64" rx="15" fill="#12473a"/>
+    <g fill="none" stroke="#ffffff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M17 29H47"/>
+      <path d="M32 13V39C32 46.5 27 50.5 20.5 48.5"/>
+    </g>
+    <path d="M41 14C49 11 54 15 53 21C46 23 41 20 41 14Z" fill="#b9dcc2"/>
+  </g>
+  <text x="88" y="33" fill="#2c6150" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="12" font-weight="600" letter-spacing="4">POLYCLINIC</text>
+  <text x="86" y="64" fill="#0a2e24" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="34" font-weight="800" letter-spacing="1.5">JERICO</text>
+</svg>
